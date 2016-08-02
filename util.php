@@ -24,11 +24,6 @@
     $navbarItemIndex = ( $_GET["nav"] ? $_GET["nav"] : 0 );
   }
 
-  function echoLine( $message )
-  {
-    echo $message . "<br/>";
-  }
-
   function downloadFile( $filename )
   {
     header( 'Content-Description: File Transfer' );
@@ -40,5 +35,4 @@
     header( 'Content-Length: ' . filesize( $filename ) );
     readfile( $filename );
   }
-
 ?>
