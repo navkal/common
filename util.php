@@ -1,14 +1,14 @@
 <?php
   date_default_timezone_set( "America/New_York" );
 
-  function initUi()
+  function initUi( $navbarCsvLocation = "" )
   {
     global $title;
     global $footer;
     global $navbarItems;
     global $navbarItemIndex;
 
-    $file = fopen( "navbar.csv", "r" );
+    $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
     $title = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
 
