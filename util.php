@@ -1,4 +1,5 @@
 <?php
+  ini_set( "error_log", $_SERVER[DOCUMENT_ROOT]."/php_errors.log" );
   date_default_timezone_set( "America/New_York" );
 
   function initUi( $navbarCsvLocation = "" )
