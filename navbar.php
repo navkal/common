@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="?nav=0" onclick="navigate(event,0)" >
-        <img alt="<?php echo $title; ?>" src="brand.ico" style="height:25px">
+        <img alt="<?=$title?>" src="brand.ico" style="height:25px">
       </a>
     </div>
 
@@ -43,10 +43,10 @@
     function()
     {
       // Set the title
-      document.title = "<?php echo $title; ?>";
+      document.title = "<?=$title?>";
 
       // Highlight selected item in navigation bar
-      var idx = parseInt( "<?php echo $navbarItemIndex; ?>" );
+      var idx = parseInt( "<?=$navbarItemIndex?>" );
       $( $( ".navbar div ul li" )[idx] ).addClass( "active" );
 
       // Set click handler for navigation bar items
