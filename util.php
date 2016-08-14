@@ -1,5 +1,5 @@
 <?php
-  ini_set( "error_log", $_SERVER[DOCUMENT_ROOT]."/php_errors.log" );
+  ini_set( "error_log", $_SERVER["DOCUMENT_ROOT"]."/php_errors.log" );
 
   function initUi( $navbarCsvLocation = "" )
   {
