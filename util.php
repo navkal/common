@@ -21,7 +21,7 @@
     fclose( $file );
 
     // Get the current navigation bar selection
-    $navbarItemIndex = ( $_GET["nav"] ? $_GET["nav"] : 0 );
+    $navbarItemIndex = ( isset( $_GET["nav"] ) ? $_GET["nav"] : 0 );
   }
 
   function downloadFile( $filename )
