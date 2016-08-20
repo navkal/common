@@ -15,7 +15,11 @@
     $navbarItems = array();
     while( ! feof( $file ) )
     {
-      array_push( $navbarItems, fgetcsv( $file ) );
+      $item = fgetcsv( $file );
+      if ( ! ( strpos( $item[0], "#" ) === 0 ) )
+      {
+        array_push( $navbarItems, $item  );
+      }
     }
 
     fclose( $file );
