@@ -39,4 +39,17 @@
     header( 'Content-Length: ' . filesize( $filename ) );
     readfile( $filename );
   }
+
+  function downloadZip( $zipFile, $zipFilename )
+  {
+    // Download the zip archive
+    header( 'Content-Description: File Transfer' );
+    header( 'Content-Type: application/zip' );
+    header( 'Content-Disposition: attachment; filename="' . $zipFilename . '"' );
+    header( 'Expires: 0' );
+    header( 'Cache-Control: must-revalidate' );
+    header( 'Pragma: public' );
+    header( 'Content-Length: ' . filesize( $zipFile ) );
+    readfile( $zipFile );
+  }
 ?>
