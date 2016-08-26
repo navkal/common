@@ -26,28 +26,15 @@
     $navbarItemIndex = ( isset( $_GET["nav"] ) ? $_GET["nav"] : 0 );
   }
 
-  function downloadFile( $filename )
+  function downloadFile( $filename, $type = "octet-stream" )
   {
     header( 'Content-Description: File Transfer' );
-    header( 'Content-Type: application/octet-stream' );
+    header( 'Content-Type: application/' . $type );
     header( 'Content-Disposition: attachment; filename="' . basename( $filename ) . '"' );
     header( 'Expires: 0' );
     header( 'Cache-Control: must-revalidate' );
     header( 'Pragma: public' );
     header( 'Content-Length: ' . filesize( $filename ) );
     readfile( $filename );
-  }
-
-  function downloadZip( $zipFile, $zipFilename )
-  {
-    // Download the zip archive
-    header( 'Content-Description: File Transfer' );
-    header( 'Content-Type: application/zip' );
-    header( 'Content-Disposition: attachment; filename="' . $zipFilename . '"' );
-    header( 'Expires: 0' );
-    header( 'Cache-Control: must-revalidate' );
-    header( 'Pragma: public' );
-    header( 'Content-Length: ' . filesize( $zipFile ) );
-    readfile( $zipFile );
   }
 ?>
