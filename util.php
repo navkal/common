@@ -14,7 +14,7 @@
     while( ! feof( $file ) )
     {
       $item = fgetcsv( $file );
-      if ( ! ( strpos( $item[0], "#" ) === 0 ) )
+      if ( ! empty( trim( $item[0] ) ) && ! ( strpos( $item[0], "#" ) === 0 ) )
       {
         array_push( $navbarItems, $item  );
       }
