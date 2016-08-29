@@ -10,7 +10,7 @@
       include "navbar.php";
     ?>
 
-    <div id="view" style="padding-top:70px;padding-bottom:60px">
+    <div id="view" style="padding-top:70px;padding-bottom:80px">
       <?php
         // Content corresponding to navigation bar selection
         include $navbarItems[$navbarItemIndex][1];
