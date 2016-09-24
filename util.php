@@ -1,7 +1,8 @@
 <?php
+  session_start();
+
   function initUi( $navbarCsvLocation = "" )
   {
-    session_start();
     global $title;
     global $footer;
     global $navbarItems;
