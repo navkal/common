@@ -96,7 +96,7 @@
     $messages = [];
     if ( $md5Hash !== md5( file_get_contents( $filename ) ) )
     {
-      $messages.push( "File failed checksum validation" );
+      array_push( $messages, "Checksum validation failed" );
     }
 
     return $messages;
