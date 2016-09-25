@@ -43,27 +43,27 @@
   function markFile( $filename )
   {
     $_SESSION["markFile"] = file_get_contents( $filename );
-    error_log( "====> ses markFile=" . $_SESSION["markFile"] );
+
     $lines = file( $filename );
-    error_log( "====> markFile BF: " . print_r( $lines, true ) );
     $file = fopen( $filename, "a" );
     fwrite( $file, md5( file_get_contents( $filename ) ) );
     fclose( $file );
     $lines = file( $filename );
-    error_log( "====> markFile AF: " . print_r( $lines, true ) );
   }
 
   function unmarkFile( $filename )
   {
-    $lines = file( $filename );
-    error_log( "====> unmarkFile BF: " . print_r( $lines, true ) );
-    error_log( "===> md5Hash = " . $lines[ count( $lines ) - 2 ] );
-
-
+    // Determine size of file containing MD5 hash
     $filesize = filesize( $filename );
 
-    // Consume trailing control characters
+    //
+    // Retrieve MD5 hash and remove from file
+    //
+
+    // Open file
     $file = fopen($filename, 'r+');
+
+    // Consume trailing control characters
     $cursor = 0;
     do
     {
@@ -90,25 +90,22 @@
     }
     while ( ctype_print( $char ) );
 
-
-    error_log( "======> md5Hash=" . $md5Hash );
+    // Truncate file
     ftruncate( $file, $filesize + $cursor + 1);
+
+    // Close file
     fclose( $file );
 
-    $lines = file( $filename );
-    error_log( "====> unmarkFile AF: " . print_r( $lines, true ) );
 
     $_SESSION["unmarkFile"] = file_get_contents( $filename );
-
     error_log( "====> ses markFile=<" . $_SESSION["markFile"] . ">" );
     error_log( "====> ses unmarkFile=<" . $_SESSION["unmarkFile"] . ">" );
     error_log( "======> Are file contents the same? " . ( ( $_SESSION["markFile"] == $_SESSION["unmarkFile"] ) ? "YES" : "NO" ) );
 
-    $newMd5Hash = md5( file_get_contents( $filename ) );
-    error_log( "====> New MD5 hash=" . $newMd5Hash );
-    error_log( "======> Are hash values the same? " . ( ( $md5Hash == $newMd5Hash ) ? "YES" : "NO" ) );
+    // Determine MD5 hash of truncated file
+    $md5HashNew = md5( file_get_contents( $filename ) );
 
-    $testMessage = "$md5Hash ==?== $newMd5Hash";
+    $testMessage = "$md5Hash ==?== $md5HashNew --  Are they the same? " . ( ( $md5Hash == $md5HashNew ) ? "YES" : "NO" ) ;
     error_log( $testMessage );
     return [ $testMessage ];
   }
