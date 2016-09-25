@@ -42,13 +42,9 @@
 
   function markFile( $filename )
   {
-    $_SESSION["markFile"] = file_get_contents( $filename );
-
-    $lines = file( $filename );
     $file = fopen( $filename, "a" );
     fwrite( $file, md5( file_get_contents( $filename ) ) );
     fclose( $file );
-    $lines = file( $filename );
   }
 
   function unmarkFile( $filename )
@@ -91,22 +87,18 @@
     while ( ctype_print( $char ) );
 
     // Truncate file
-    ftruncate( $file, $filesize + $cursor + 1);
+    ftruncate( $file, $filesize + $cursor + 1 );
 
     // Close file
     fclose( $file );
 
+    // Validate MD5 hash of unmarked file with MD5 hash retrieved from file
+    $messages = [];
+    if ( $md5Hash !== md5( file_get_contents( $filename ) ) )
+    {
+      $messages.push( "File failed checksum validation" );
+    }
 
-    $_SESSION["unmarkFile"] = file_get_contents( $filename );
-    error_log( "====> ses markFile=<" . $_SESSION["markFile"] . ">" );
-    error_log( "====> ses unmarkFile=<" . $_SESSION["unmarkFile"] . ">" );
-    error_log( "======> Are file contents the same? " . ( ( $_SESSION["markFile"] == $_SESSION["unmarkFile"] ) ? "YES" : "NO" ) );
-
-    // Determine MD5 hash of truncated file
-    $md5HashNew = md5( file_get_contents( $filename ) );
-
-    $testMessage = "$md5Hash ==?== $md5HashNew --  Are they the same? " . ( ( $md5Hash == $md5HashNew ) ? "YES" : "NO" ) ;
-    error_log( $testMessage );
-    return [ $testMessage ];
+    return $messages;
   }
 ?>
