@@ -62,33 +62,37 @@
 
     $filesize = filesize( $filename );
 
-    // Traverse trailing end-of-line stuff
+    // Consume trailing control characters
     $file = fopen($filename, 'r+');
     $cursor = 0;
     do
     {
-      fseek( $file, $cursor--, SEEK_END );
+      fseek( $file, $cursor, SEEK_END );
       $char = fgetc( $file );
+      if ( ! ctype_print( $char ) )
+      {
+        $cursor--;
+      }
     }
     while ( ! ctype_print( $char ) );
 
     // Recover saved MD5 hash
-    $cursor ++;
     $md5Hash = "";
     do
     {
-      fseek( $file, $cursor--, SEEK_END );
+      fseek( $file, $cursor, SEEK_END );
       $char = fgetc( $file );
-      $md5Hash = $char.$md5Hash;
+      if ( ctype_print( $char ) )
+      {
+        $md5Hash = $char.$md5Hash;
+        $cursor--;
+      }
     }
     while ( ctype_print( $char ) );
 
-    // WHY why why do we have to increment twice???!!!!!!!
-    $cursor ++;
-    $cursor ++;
 
     error_log( "======> md5Hash=" . $md5Hash );
-    ftruncate( $file, $filesize + $cursor );
+    ftruncate( $file, $filesize + $cursor + 1);
     fclose( $file );
 
     $lines = file( $filename );
@@ -98,12 +102,11 @@
 
     error_log( "====> ses markFile=<" . $_SESSION["markFile"] . ">" );
     error_log( "====> ses unmarkFile=<" . $_SESSION["unmarkFile"] . ">" );
-
-    error_log( "======> same? " . ( ( $_SESSION["markFile"] == $_SESSION["unmarkFile"] ) ? "YES" : "NO" ) );
-
+    error_log( "======> Are file contents the same? " . ( ( $_SESSION["markFile"] == $_SESSION["unmarkFile"] ) ? "YES" : "NO" ) );
 
     $newMd5Hash = md5( file_get_contents( $filename ) );
     error_log( "====> New MD5 hash=" . $newMd5Hash );
+    error_log( "======> Are hash values the same? " . ( ( $md5Hash == $newMd5Hash ) ? "YES" : "NO" ) );
 
     $testMessage = "$md5Hash ==?== $newMd5Hash";
     error_log( $testMessage );
