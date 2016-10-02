@@ -1,4 +1,6 @@
 <?php
+  // Copyright 2016 Energize Apps.  All rights reserved.
+
   session_start();
 
   function initUi( $navbarCsvLocation = "" )

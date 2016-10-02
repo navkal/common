@@ -1,3 +1,5 @@
+<!-- Copyright 2016 Energize Apps.  All rights reserved. -->
+
 <!DOCTYPE html>
 <html lang="en">
   <?php
