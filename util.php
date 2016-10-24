@@ -147,3 +147,14 @@
 <?php
   }
 ?>
+
+<?php
+  function reportContactError()
+  {
+?>
+    <br/>
+    <p class="h3">An error occurred while transmitting your message.</p>
+    <p class="h3">Please try again later.</p>
+<?php
+  }
+?>
