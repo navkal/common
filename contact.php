@@ -22,6 +22,21 @@
 </style>
 
 <?php
+  require_once $_SERVER["DOCUMENT_ROOT"]."/../common/util.php";
+
+  function contact( $titleClass, $titleWho, $to, $iWe, $signature )
+  {
+    error_log( "====> post=" . print_r( $_POST, true ) );
+
+    if ( count( $_POST ) == 0 )
+    {
+      showContactForm( $titleClass, $titleWho );
+    }
+    else
+    {
+      sendContactMessage( $to, $iWe, $signature );
+    }
+  }
 
   function sendContactMessage( $to, $iWe, $signature )
   {
