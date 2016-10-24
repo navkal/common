@@ -149,6 +149,17 @@
 ?>
 
 <?php
+  function reportContactSuccess( $iWe, $signature )
+  {
+?>
+    <br/>
+    <p class="h3">Thank you for your interest.</p>
+    <p class="h3"><?=$iWe?> will be in touch!</p>
+    <p class="h3">- <?=$signature?></p>
+<?php
+  }
+?>
+<?php
   function reportContactError()
   {
 ?>
