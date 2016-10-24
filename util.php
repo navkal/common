@@ -103,6 +103,41 @@
 
     return $messages;
   }
+
+  function sendContactMessage( $to, $iWe, $signature )
+  {
+    $name = $_POST["firstName"] . " " . $_POST["lastName"];
+    $subject = "From " . $name;
+    $comment = str_replace( "\n", "<br/>", $_POST["comment"] );
+
+    $text =
+      "<style>body{font-family: arial;}</style>" .
+      "<html><body>".
+      "<h4><u>Name</u></h4><span>" . $name . "</span>" .
+      "<hr/>" .
+      "<h4><u>Email</u></h4><p>" . $_POST["email"] . "</p>" .
+      "<hr/>" .
+      "<h4><u>Subject</u></h4><p>" . $_POST["subject"] . "</p>" .
+      "<hr/>" .
+      "<h4><u>Comment</u></h4><p>" . $comment . "</p>" .
+      "<hr/>" .
+      "</html></body>";
+
+
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: " . $_POST["email"] . "<SmtpDispatch@gmail.com>" . "\r\n";
+
+    if ( mail( $to, $subject, $text, $headers ) )
+    {
+      reportContactSuccess( $iWe, $signature );
+    }
+    else
+    {
+      reportContactError();
+    }
+  }
+
 ?>
 
 <?php
