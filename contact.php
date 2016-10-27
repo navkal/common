@@ -30,7 +30,7 @@
 
     if ( count( $_POST ) == 0 )
     {
-      showContactForm( $titleClass, $titleWho );
+      showContactForm( $titleClass, $titleWho, $to );
     }
     else
     {
@@ -75,11 +75,18 @@
 ?>
 
 <?php
-  function showContactForm( $titleClass, $titleWho )
+  function showContactForm( $titleClass, $titleWho, $to )
   {
 ?>
     <form id="contactForm" role="form" onsubmit="return onSubmitContact();" method="post" enctype="multipart/form-data" >
-      <p class="<?=$titleClass?>"><b>Contact <?=$titleWho?></b></p>
+
+      <p class="<?=$titleClass?>">
+        <b>Contact <?=$titleWho?></b>
+        <a href="mailto:<?=$to?>">
+          <span class="glyphicon glyphicon-envelope" title="Email" style="color: white; padding-left: 20px; ">
+          </span>
+        </a>
+      </p>
 
       <div class="form-group">
         <label for="firstName">First Name</label>
