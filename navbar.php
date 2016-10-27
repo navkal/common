@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="?nav=0" onclick="navigate(event,0)" >
+      <a class="navbar-brand" href="?<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
         <img alt="<?=$title?>" src="brand.ico" style="height:25px">
       </a>
     </div>
@@ -21,7 +21,7 @@
           $idx = 0;
           foreach ( $navbarItems as $item )
           {
-            echo '<li><a href="?nav='.$idx++.'">'.$item[0].'</a></li>';
+            echo '<li><a href="?'.$navbarKeys[$idx++].'">'.$item[0].'</a></li>';
           }
         ?>
       </ul>

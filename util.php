@@ -8,6 +8,8 @@
     global $title;
     global $footer;
     global $navbarItems;
+    global $navbarKeys;
+    global $navbarItemKey;
     global $navbarItemIndex;
 
     $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
@@ -15,19 +17,24 @@
     $footer = fgetcsv( $file )[0];
 
     $navbarItems = array();
+    $navbarKeys = array();
     while( ! feof( $file ) )
     {
       $item = fgetcsv( $file );
       if ( ! empty( trim( $item[0] ) ) && ! ( strpos( $item[0], "#" ) === 0 ) )
       {
-        array_push( $navbarItems, $item  );
+        $key = $item[0];
+        array_push( $navbarKeys, $key );
+        $navbarItems[$key] = [ $item[1], $item[2] ];
       }
     }
 
     fclose( $file );
 
     // Get the current navigation bar selection
-    $navbarItemIndex = ( isset( $_GET["nav"] ) ? $_GET["nav"] : 0 );
+    $getKeys = array_keys( $_GET );
+    $navbarItemKey = ( ( count( $getKeys ) > 0 ) ? $getKeys[0] : $navbarKeys[0] );
+    $navbarItemIndex = array_search( $navbarItemKey, $navbarKeys );
   }
 
   function downloadFile( $filename, $type = "octet-stream" )

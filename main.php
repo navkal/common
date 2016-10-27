@@ -15,7 +15,7 @@
     <div id="view" style="padding-top:70px;padding-bottom:80px">
       <?php
         // Content corresponding to navigation bar selection
-        include $navbarItems[$navbarItemIndex][1];
+        include $navbarItems[$navbarItemKey][1];
       ?>
     </div>
 
