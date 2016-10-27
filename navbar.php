@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="?<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
-        <img alt="<?=$title?>" src="brand.ico" style="height:25px">
+        <img alt="<?=$siteName?>" src="brand.ico" style="height:25px">
       </a>
     </div>
 

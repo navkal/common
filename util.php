@@ -5,15 +5,16 @@
 
   function initUi( $navbarCsvLocation = "" )
   {
-    global $title;
+    global $siteName;
     global $footer;
     global $navbarItems;
     global $navbarKeys;
     global $navbarItemKey;
     global $navbarItemIndex;
+    global $title;
 
     $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
-    $title = fgetcsv( $file )[0];
+    $siteName = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
 
     $navbarItems = array();
@@ -35,6 +36,7 @@
     $getKeys = array_keys( $_GET );
     $navbarItemKey = ( ( count( $getKeys ) > 0 ) ? $getKeys[0] : $navbarKeys[0] );
     $navbarItemIndex = array_search( $navbarItemKey, $navbarKeys );
+    $title = $navbarItems[$navbarItemKey][0] . " - " . $siteName;
   }
 
   function downloadFile( $filename, $type = "octet-stream" )
