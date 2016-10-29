@@ -1,32 +1,13 @@
 <!-- Copyright 2016 Energize Apps.  All rights reserved. -->
 
-<style>
-  body
-  {
-    background-image: url( "contact/bg.jpg" );
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-  }
-
-  label, p.h3, p.h2, .form-control, .glyphicon
-  {
-    color: white;
-  }
-
-  .form-control
-  {
-    background-color: transparent;
-  }
-</style>
-
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"]."/../common/util.php";
 
-  function contact( $titleClass, $titleWho, $to, $iWe, $signature )
+  function contact( $titleClass, $titleWho, $to, $iWe, $signature, $fgColor="", $bgImage="" )
   {
     error_log( "====> post=" . print_r( $_POST, true ) );
+
+    initStyle( $fgColor, $bgImage );
 
     if ( count( $_POST ) == 0 )
     {
@@ -72,6 +53,49 @@
     }
   }
 
+?>
+
+<?php
+  function initStyle( $fgColor, $bgImage )
+  {
+?>
+  <style>
+
+    <?php
+      if ( $fgColor != "" )
+      {
+    ?>
+        label, p.h3, p.h2, .form-control, .glyphicon
+        {
+            color: <?=$fgColor?>;
+        }
+    <?php
+      }
+    ?>
+
+    <?php
+      if ( $bgImage != "" )
+      {
+    ?>
+        body
+        {
+          background-image: url( "<?=$bgImage?>" );
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+
+        .form-control
+        {
+          background-color: transparent;
+        }
+    <?php
+      }
+    ?>
+  </style>
+<?php
+  }
 ?>
 
 <?php
