@@ -69,12 +69,12 @@
         {
           color: <?=$fgColor?>;
         }
-        .glyphicon-envelope
+        form .glyphicon-envelope
         {
           color: <?=$fgColor?>;
           background-color: transparent;
         }
-        .glyphicon-envelope:hover
+        form .glyphicon-envelope:hover
         {
           color: <?=$hoverColor?>;
           background-color: <?=$fgColor?>;
@@ -120,7 +120,7 @@
           <b>Contact <?=$titleWho?></b>
         </span>
         <a href="mailto:<?=$to?>">
-          <span class="glyphicon glyphicon-envelope" title="Email">
+          <span class="glyphicon glyphicon-envelope" title="<?=$to?>">
           </span>
         </a>
       </p>

@@ -7,6 +7,7 @@
   {
     global $siteName;
     global $footer;
+    global $mailto;
     global $navbarItems;
     global $navbarKeys;
     global $navbarItemKey;
@@ -16,6 +17,7 @@
     $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
     $siteName = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
+    $mailto = fgetcsv( $file )[0];
 
     $navbarItems = array();
     $navbarKeys = array();
