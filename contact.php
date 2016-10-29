@@ -3,11 +3,11 @@
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"]."/../common/util.php";
 
-  function contact( $titleClass, $titleWho, $to, $iWe, $signature, $fgColor="", $bgImage="" )
+  function contact( $titleClass, $titleWho, $to, $iWe, $signature, $fgColor="", $hoverColor="", $bgImage="" )
   {
     error_log( "====> post=" . print_r( $_POST, true ) );
 
-    initStyle( $fgColor, $bgImage );
+    initStyle( $fgColor, $hoverColor, $bgImage );
 
     if ( count( $_POST ) == 0 )
     {
@@ -56,7 +56,7 @@
 ?>
 
 <?php
-  function initStyle( $fgColor, $bgImage )
+  function initStyle( $fgColor, $hoverColor, $bgImage )
   {
 ?>
   <style>
@@ -65,9 +65,20 @@
       if ( $fgColor != "" )
       {
     ?>
-        label, p.h3, p.h2, .form-control, .glyphicon
+        label, p.h3, p.h2, .form-control
         {
-            color: <?=$fgColor?>;
+          color: <?=$fgColor?>;
+        }
+        .glyphicon-envelope
+        {
+          color: <?=$fgColor?>;
+          background-color: transparent;
+        }
+        .glyphicon-envelope:hover
+        {
+          color: <?=$hoverColor?>;
+          background-color: <?=$fgColor?>;
+          padding: 0px 3px;
         }
     <?php
       }
