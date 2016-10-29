@@ -32,9 +32,11 @@
 
     fclose( $file );
 
-    // Get the current navigation bar selection
+    // Get the current navigation bar selection - detected by the following rules:
+    // - Must be first parameter
+    // - Must have no value
     $getKeys = array_keys( $_GET );
-    $navbarItemKey = ( ( count( $getKeys ) > 0 ) ? $getKeys[0] : $navbarKeys[0] );
+    $navbarItemKey = ( ( ( count( $getKeys ) > 0 ) && ( $_GET[$getKeys[0]] == "" ) ) ? $getKeys[0] : $navbarKeys[0] );
     $navbarItemIndex = array_search( $navbarItemKey, $navbarKeys );
     $title = $navbarItems[$navbarItemKey][0] . " - " . $siteName;
   }
