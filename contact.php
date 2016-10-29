@@ -10,7 +10,7 @@
     background-size: cover;
   }
 
-  label, p.h3, p.h2, .form-control
+  label, p.h3, p.h2, .form-control, .glyphicon
   {
     color: white;
   }
@@ -81,9 +81,11 @@
     <form id="contactForm" role="form" onsubmit="return onSubmitContact();" method="post" enctype="multipart/form-data" >
 
       <p class="<?=$titleClass?>">
-        <b>Contact <?=$titleWho?></b>
+        <span style="padding-right: 1em;">
+          <b>Contact <?=$titleWho?></b>
+        </span>
         <a href="mailto:<?=$to?>">
-          <span class="glyphicon glyphicon-envelope" title="Email" style="color: white; padding-left: 20px; ">
+          <span class="glyphicon glyphicon-envelope" title="Email">
           </span>
         </a>
       </p>
