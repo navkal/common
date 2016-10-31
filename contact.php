@@ -3,7 +3,7 @@
 <?php
   require_once $_SERVER["DOCUMENT_ROOT"]."/../common/util.php";
 
-  function contact( $titleClass, $titleWho, $to, $iWe, $signature, $fgColor="", $hoverColor="", $bgImage="" )
+  function contact( $titleClass, $titleWho, $iWe, $signature, $fgColor="", $hoverColor="", $bgImage="" )
   {
     error_log( "====> post=" . print_r( $_POST, true ) );
 
@@ -11,15 +11,15 @@
 
     if ( count( $_POST ) == 0 )
     {
-      showContactForm( $titleClass, $titleWho, $to );
+      showContactForm( $titleClass, $titleWho );
     }
     else
     {
-      sendContactMessage( $to, $iWe, $signature );
+      sendContactMessage( $iWe, $signature );
     }
   }
 
-  function sendContactMessage( $to, $iWe, $signature )
+  function sendContactMessage( $iWe, $signature )
   {
     $name = $_POST["firstName"] . " " . $_POST["lastName"];
     $subject = "From " . $name;
@@ -43,7 +43,8 @@
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: " . $_POST["email"] . "<SmtpDispatch@gmail.com>" . "\r\n";
 
-    if ( mail( $to, $subject, $text, $headers ) )
+    global $mailto;
+    if ( mail( $mailto, $subject, $text, $headers ) )
     {
       reportContactSuccess( $iWe, $signature );
     }
@@ -110,8 +111,9 @@
 ?>
 
 <?php
-  function showContactForm( $titleClass, $titleWho, $to )
+  function showContactForm( $titleClass, $titleWho )
   {
+    global $mailto;
 ?>
     <form id="contactForm" role="form" onsubmit="return onSubmitContact();" method="post" enctype="multipart/form-data" >
 
@@ -119,8 +121,8 @@
         <span style="padding-right: 1em;">
           <b>Contact <?=$titleWho?></b>
         </span>
-        <a href="mailto:<?=$to?>">
-          <span class="glyphicon glyphicon-envelope" title="<?=$to?>">
+        <a href="mailto:<?=$mailto?>">
+          <span class="glyphicon glyphicon-envelope" title="<?=$mailto?>">
           </span>
         </a>
       </p>
