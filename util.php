@@ -14,6 +14,12 @@
     global $navbarItemIndex;
     global $title;
 
+    $navbarHideItems = [];
+    if ( $navbarHideEnv = getenv( "NAVBAR_HIDE" ) )
+    {
+      $navbarHideItems = explode( ",", $navbarHideEnv );
+    }
+
     $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
     $siteName = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
@@ -26,9 +32,12 @@
       $item = fgetcsv( $file );
       if ( ! empty( trim( $item[0] ) ) && ! ( strpos( $item[0], "#" ) === 0 ) )
       {
-        $key = $item[0];
-        array_push( $navbarKeys, $key );
-        $navbarItems[$key] = [ $item[1], $item[2] ];
+        $key = trim( $item[0] );
+        if ( ! in_array( $key, $navbarHideItems ) )
+        {
+          array_push( $navbarKeys, $key );
+          $navbarItems[$key] = [ trim( $item[1] ), trim( $item[2] ) ];
+        }
       }
     }
 
