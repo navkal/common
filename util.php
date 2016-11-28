@@ -40,11 +40,11 @@
     $title = $navbarItems[$navbarItemKey][0] . " - " . $siteName;
   }
 
-  function downloadFile( $filename, $type = "octet-stream" )
+  function downloadFile( $filename, $ext = "", $type = "octet-stream" )
   {
     header( 'Content-Description: File Transfer' );
     header( 'Content-Type: application/' . $type );
-    header( 'Content-Disposition: attachment; filename="' . basename( $filename ) . '"' );
+    header( 'Content-Disposition: attachment; filename="' . basename( $filename ) . $ext . '"' );
     header( 'Expires: 0' );
     header( 'Cache-Control: must-revalidate' );
     header( 'Pragma: public' );
