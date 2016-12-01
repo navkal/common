@@ -14,6 +14,8 @@
     global $navbarItemIndex;
     global $title;
 
+    define( "NAVBAR_TEST", "NAVBAR_TEST" );
+
     $navbarHideItems = [];
     if ( $navbarHideEnv = getenv( "NAVBAR_HIDE" ) )
     {
@@ -37,6 +39,10 @@
         {
           array_push( $navbarKeys, $key );
           $navbarItems[$key] = [ trim( $item[1] ), trim( $item[2] ) ];
+          if ( count( $item ) > 3 )
+          {
+            array_push( $navbarItems[$key], trim( $item[3] ) );
+          }
         }
       }
     }

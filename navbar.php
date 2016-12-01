@@ -21,7 +21,10 @@
           $idx = 0;
           foreach ( $navbarItems as $item )
           {
-            echo '<li><a href="?page='.$navbarKeys[$idx++].'">'.$item[0].'</a></li>';
+            if ( $item[count($item)-1] != NAVBAR_TEST )
+            {
+              echo '<li><a href="?page='.$navbarKeys[$idx++].'">'.$item[0].'</a></li>';
+            }
           }
         ?>
       </ul>
