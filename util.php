@@ -14,7 +14,10 @@
     global $navbarItemIndex;
     global $title;
 
-    define( "NAVBAR_TEST", "NAVBAR_TEST" );
+    if ( ! defined( "NAVBAR_TEST" ) )
+    {
+      define( "NAVBAR_TEST", "NAVBAR_TEST" );
+    }
 
     $navbarHideItems = [];
     if ( $navbarHideEnv = getenv( "NAVBAR_HIDE" ) )
