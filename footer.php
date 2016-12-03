@@ -5,7 +5,7 @@
       <span style="padding-right: 1em;">
         <?php global $footer; echo $footer; ?>
       </span>
-      <a href="mailto:<?=$mailto?>">
+      <a href="mailto:<?php global $mailto; echo $mailto; ?>">
         <span class="glyphicon glyphicon-envelope" title="<?=$mailto?>">
         </span>
       </a>
