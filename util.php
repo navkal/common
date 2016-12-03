@@ -74,7 +74,7 @@
     fclose( $file );
   }
 
-  function unmarkFile( $filename )
+  function unmarkFile( $filename, $msgWhatFile )
   {
     // Determine size of file containing MD5 hash
     $filesize = filesize( $filename );
@@ -84,7 +84,7 @@
     //
 
     // Open file
-    $file = fopen($filename, 'r+');
+    $file = fopen( $filename, "r+" );
 
     // Consume trailing control characters
     $cursor = 0;
@@ -99,7 +99,7 @@
     }
     while ( ! ctype_print( $char ) );
 
-    // Recover saved MD5 hash
+    // Retrieve last line of file, which should be the saved MD5 hash
     $md5Hash = "";
     do
     {
@@ -107,7 +107,7 @@
       $char = fgetc( $file );
       if ( ctype_print( $char ) )
       {
-        $md5Hash = $char.$md5Hash;
+        $md5Hash = $char . $md5Hash;
         $cursor--;
       }
     }
@@ -119,10 +119,16 @@
     // Close file
     fclose( $file );
 
-    // Validate MD5 hash of unmarked file with MD5 hash retrieved from file
+    // Validate file
     $messages = [];
-    if ( $md5Hash !== md5( file_get_contents( $filename ) ) )
+    if ( ( strlen( $md5Hash ) != 32 ) || ! ctype_xdigit( $md5Hash ) )
     {
+      // No MD5 hash, thus not a Results File
+      array_push( $messages, "Not a " . $msgWhatFile );
+    }
+    else if ( $md5Hash !== md5( file_get_contents( $filename ) ) )
+    {
+      // MD5 hash value found, but not valid
       array_push( $messages, "Checksum validation failed" );
     }
 
