@@ -132,4 +132,14 @@
 
     return $messages;
   }
+
+  function quote( $s )
+  {
+    $s = trim( $s );
+    if ( $s[0] != '"' )
+    {
+      $s = '"' . $s . '"';
+    }
+    return $s;
+  }
 ?>
