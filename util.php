@@ -133,9 +133,13 @@
     return $messages;
   }
 
-  function quote( $s )
+  function quote( $s, $bTrim = true )
   {
-    $s = trim( $s );
+    if ( $bTrim )
+    {
+      $s = trim( $s );
+    }
+
     if ( $s[0] != '"' )
     {
       $s = '"' . $s . '"';
