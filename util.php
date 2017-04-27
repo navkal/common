@@ -135,15 +135,22 @@
 
   function quote( $s, $bTrim = true )
   {
+    // Optionally trim the string
     if ( $bTrim )
     {
       $s = trim( $s );
     }
 
-    if ( $s[0] != '"' )
+    // If string is not already quoted...
+    if ( ! ( ( $s[0] == '"' ) && ( substr( $s, -1 ) == '"' ) ) )
     {
+      // Replace all double quotes with single quotes
+      $s = str_replace( '"', "'", $s );
+
+      // Enclose string in quotes
       $s = '"' . $s . '"';
     }
+
     return $s;
   }
 ?>
