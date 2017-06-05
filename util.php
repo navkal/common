@@ -3,7 +3,7 @@
 
   session_start();
 
-  function initUi( $navbarCsvLocation = "" )
+  function initUi()
   {
     global $siteName;
     global $footer;
@@ -20,7 +20,8 @@
       $navbarHideItems = explode( ",", $navbarHideEnv );
     }
 
-    $file = fopen( $navbarCsvLocation . "navbar.csv", "r" );
+    $navbarCsv = isset( $_SESSION['navbarCsv'] ) ? $_SESSION['navbarCsv'] : $_SERVER["DOCUMENT_ROOT"] . "/navbar.csv";
+    $file = fopen( $navbarCsv, "r" );
     $siteName = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
     $mailto = fgetcsv( $file )[0];
