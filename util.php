@@ -5,6 +5,7 @@
 
   function initUi()
   {
+    global $g_sNavbarCsv;
     global $siteName;
     global $footer;
     global $mailto;
@@ -20,7 +21,7 @@
       $navbarHideItems = explode( ",", $navbarHideEnv );
     }
 
-    $navbarCsv = defined( 'NAVBAR_CSV' ) ? NAVBAR_CSV : $_SERVER["DOCUMENT_ROOT"] . "/navbar.csv";
+    $navbarCsv = isset( $g_sNavbarCsv ) ? $g_sNavbarCsv : $_SERVER["DOCUMENT_ROOT"] . "/navbar.csv";
     $file = fopen( $navbarCsv, "r" );
     $siteName = fgetcsv( $file )[0];
     $footer = fgetcsv( $file )[0];
