@@ -52,7 +52,7 @@
     // Get the current navigation bar selection
     $navbarItemKey = ( isset( $_GET["page"] ) ? $_GET["page"] : $navbarKeys[0] );
     $navbarItemIndex = array_search( $navbarItemKey, $navbarKeys );
-    $title = $navbarItems[$navbarItemKey][0] . " - " . $siteName;
+    $title = ( isset( $navbarItems[$navbarItemKey][0] ) ? $navbarItems[$navbarItemKey][0] : 'Error' ) . " - " . $siteName;
   }
 
   function downloadFile( $filename, $ext = "", $type = "octet-stream" )

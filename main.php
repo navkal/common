@@ -15,7 +15,7 @@
     <div id="view" style="padding-top:70px;padding-bottom:80px">
       <?php
         // Content corresponding to navigation bar selection
-        include $navbarItems[$navbarItemKey][1];
+        include isset( $navbarItems[$navbarItemKey][1] ) ? $navbarItems[$navbarItemKey][1] : 'error.php';
       ?>
     </div>
 
