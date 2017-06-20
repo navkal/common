@@ -144,7 +144,7 @@
     }
 
     // If string is not already quoted...
-    if ( ! ( ( $s[0] == '"' ) && ( substr( $s, -1 ) == '"' ) ) )
+    if ( empty( $s ) || ! ( ( $s[0] == '"' ) && ( substr( $s, -1 ) == '"' ) ) )
     {
       // Replace all double quotes with single quotes
       $s = str_replace( '"', "'", $s );
