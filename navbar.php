@@ -65,9 +65,6 @@
     $( "#view" ).css( "color", "gray" );
     $( "body" ).css( "cursor", "progress" );
     a = ( idx == null ) ? this : $( ".navbar div ul li a" )[idx];
-
-    $( ".navbar div ul li.active" ).removeClass( "active" );
-    $( a ).parent().addClass( "active" );
   }
 
 </script>
