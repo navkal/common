@@ -1,5 +1,5 @@
 <?php
-  // Copyright 2016 Energize Apps.  All rights reserved.
+  // Copyright 2018 Energize Apps.  All rights reserved.
 
   session_start();
 
