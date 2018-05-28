@@ -1,7 +1,7 @@
 <?php
   // Copyright 2018 Energize Apps.  All rights reserved.
 
-  session_start();
+  @session_start();
 
   function initUi()
   {
