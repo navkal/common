@@ -3,6 +3,9 @@
 
   @session_start();
 
+  // Define SUDO command
+  define( 'SUDO', ( PHP_OS == 'Linux' ) ? 'sudo ' : '' );
+
   function initUi()
   {
     global $g_sNavbarCsv;
