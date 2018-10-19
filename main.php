@@ -9,7 +9,7 @@
     <?php
       // Navigation bar and labels
       initUi();
-      include "navbar.php";
+      include 'navbar' . BOOTSTRAP_VERSION . '.php';
     ?>
 
     <div id="view" style="padding-top:70px;padding-bottom:80px">
@@ -21,7 +21,7 @@
 
     <?php
       // Sticky footer
-      include "footer.php";
+      include 'footer' . BOOTSTRAP_VERSION . '.php';
     ?>
  	</body>
 </html>
