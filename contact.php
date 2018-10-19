@@ -70,12 +70,12 @@
         {
           color: <?=$fgColor?>;
         }
-        form .glyphicon-envelope
+        form .fa-envelope
         {
           color: <?=$fgColor?>;
           background-color: transparent;
         }
-        form .glyphicon-envelope:hover
+        form .fa-envelope:hover
         {
           color: <?=$hoverColor?>;
           background-color: <?=$fgColor?>;
@@ -122,8 +122,8 @@
           <b>Contact <?=$titleWho?></b>
         </span>
         <a href="mailto:<?=$mailto?>">
-          <span class="glyphicon glyphicon-envelope" title="<?=$mailto?>">
-          </span>
+          <i class="fas fa-envelope" title="<?=$mailto?>">
+          </i>
         </a>
       </p>
 

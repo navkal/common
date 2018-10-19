@@ -6,8 +6,8 @@
         <?php global $footer; echo $footer; ?>
       </span>
       <a href="mailto:<?php global $mailto; echo $mailto; ?>">
-        <span class="glyphicon glyphicon-envelope" title="<?=$mailto?>">
-        </span>
+        <i class="fas fa-envelope" title="<?=$mailto?>">
+        </i>
       </a>
     </p>
   </div>
