@@ -1,6 +1,6 @@
 <!-- Copyright 2018 Energize Apps.  All rights reserved. -->
 <div class="navbar fixed-bottom navbar-light bg-light" style="padding-top:12px; padding-bottom:15px; border-top:1px solid lightgray;" >
-  <p class="text-muted lato" style="margin:auto; font-size:14px" >
+  <p class="text-muted lato" style="margin:auto; font-size:13.5px" >
     <span style="padding-right: 1em;">
       <?php global $footer; echo $footer; ?>
     </span>
