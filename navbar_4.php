@@ -1,6 +1,6 @@
 <!-- Copyright 2018 Energize Apps.  All rights reserved. -->
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixed-top navbar-light bg-light">
 
   <!-- Brand -->
   <a class="navbar-brand" href="?page=<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
@@ -40,6 +40,9 @@
 
       // Set the title
       document.title = "<?=$title?>";
+
+      // Set expansion behavior
+      $( 'nav.navbar.fixed-top' ).addClass( '<?=defined( "NAVBAR_EXPAND_CLASS" ) ? NAVBAR_EXPAND_CLASS : "navbar-expand-sm"?>' );
 
       // Highlight selected item in navigation bar
       var idx = parseInt( "<?=$navbarItemIndex?>" );
