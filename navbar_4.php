@@ -35,18 +35,13 @@
 
 <script>
 
-  // Initialize favicon
-  $( window ).load(
-    function()
-    {
-      $( 'head' ).append( '<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />' );
-    }
-  );
-
-  // Initialize title and navbar
+  // Initialize favicon, title, and navbar
   $( document ).ready(
     function()
     {
+      // Initialize favicon
+      $( 'head' ).append( '<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />' );
+
       // Set the title
       document.title = "<?=$title?>";
 
