@@ -42,7 +42,7 @@
       document.title = "<?=$title?>";
 
       // Set expansion behavior
-      $( 'nav.navbar.fixed-top' ).addClass( '<?=defined( "NAVBAR_EXPAND_CLASS" ) ? NAVBAR_EXPAND_CLASS : "navbar-expand-sm"?>' );
+      $( 'nav.navbar.fixed-top' ).addClass( '<?=defined( "NAVBAR_EXPAND_CLASS" ) ? NAVBAR_EXPAND_CLASS : "navbar-expand-md"?>' );
 
       // Highlight selected item in navigation bar
       var idx = parseInt( "<?=$navbarItemIndex?>" );
