@@ -1,40 +1,36 @@
 <!-- Copyright 2018 Energize Apps.  All rights reserved. -->
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="?page=<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
-        <img alt="<?=$siteName?>" src="brand.ico" style="height:25px">
-      </a>
-    </div>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <?php
-          $idx = 0;
-          foreach ( $navbarItems as $item )
+  <!-- Brand -->
+  <a class="navbar-brand" href="?page=<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
+    <img alt="<?=$siteName?>" src="brand.ico" style="height:25px">
+  </a>
+
+  <!-- Hamburger -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Menu -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <?php
+        $idx = 0;
+        foreach ( $navbarItems as $item )
+        {
+          if ( $item[count($item)-1] != "NAVBAR_TEST" )
           {
-            if ( $item[count($item)-1] != "NAVBAR_TEST" )
-            {
-              echo '<li><a href="?page='.$navbarKeys[$idx++].'">'.$item[0].'</a></li>';
-            }
+            echo '<li class="nav-item"><a class="nav-link" href="?page='.$navbarKeys[$idx++].'">'.$item[0].'</a></li>';
           }
-        ?>
-      </ul>
-    </div>
-
+        }
+      ?>
+    </ul>
   </div>
+
 </nav>
 
 <script>
-
   // Initialize favicon, title, and navbar
   $( document ).ready(
     function()
@@ -57,9 +53,6 @@
   // Handle click on navigation bar item
   function navigate( event, idx )
   {
-    $( "#view" ).css( "color", "gray" );
     $( "body" ).css( "cursor", "progress" );
-    a = ( idx == null ) ? this : $( ".navbar div ul li a" )[idx];
   }
-
 </script>
