@@ -1,5 +1,5 @@
 <!-- Copyright 2018 Energize Apps.  All rights reserved. -->
-<div class="navbar fixed-bottom navbar-light bg-light" style="padding-top:12px; padding-bottom:15px; border-top:1px solid lightgray;" >
+<div class="navbar fixed-bottom navbar-light bg-light" style="padding-top:12px; padding-bottom:15px; border-top:1px solid Gainsboro;" >
   <p class="text-muted" style="margin:auto; font-size:14px" >
     <span style="padding-right: 1em;">
       <?php global $footer; echo $footer; ?>

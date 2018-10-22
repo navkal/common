@@ -1,6 +1,6 @@
 <!-- Copyright 2018 Energize Apps.  All rights reserved. -->
 
-<nav class="navbar fixed-top navbar-light bg-light">
+<nav class="navbar fixed-top navbar-light bg-light" style="border-bottom:1px solid Gainsboro;">
 
   <!-- Brand -->
   <a class="navbar-brand" href="?page=<?=$navbarKeys[0]?>" onclick="navigate(event,0)" >
