@@ -1,4 +1,4 @@
-<!-- Copyright 2018 Panel Spy.  All rights reserved. -->
+<!-- Copyright 2019 Panel Spy.  All rights reserved. -->
 
 <div class="container">
   <div class="alert alert-danger text-center">
