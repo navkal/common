@@ -1,5 +1,5 @@
-<!-- Copyright 2019 Energize Apps.  All rights reserved. -->
-<div class="navbar navbar-default navbar-fixed-bottom" style="padding-top:10px">
+<!-- Copyright 2022 Energize Lawrence.  All rights reserved. -->
+<div id="footer" class="navbar navbar-default navbar-fixed-bottom" style="padding-top:10px">
   <div class="container">
     <p class="text-muted lato" style="text-align:center">
       <span style="padding-right: 1em;">
